@@ -14,30 +14,28 @@ class AccountsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
-    if (JSON.stringify(element) == ""){
-      let err = "Ошибка"
-     // console.log (err);
-      return err
-    }
-    else {
-    this.element = element;
-    this.registerEvents();
-    this.update();
-  }
+    if (element != undefined){
+      this.element = element;
+      this.registerEvents();
+      this.update();
+    } else {
+      throw "Отсутствует параметр"
+      return
+   }
 }
 
   /**
    * При нажатии на .create-account открывает окно
    * #modal-new-account для создания нового счёта
    * При нажатии на один из существующих счетов
-   * (которые отображены в боковой колонке),
+   *(которые отображены в боковой колонке),
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
     
     let createAccount = document.querySelector(".create-account")
     document.querySelector(".create-account").onclick = e => {
-     // console.log (createAccount)
+     // console.log(createAccount)
      // e.preventDefault()
       App.getModal("createAccount").open()
     }
@@ -45,7 +43,7 @@ class AccountsWidget {
     this.element.onclick = e => {
       e.preventDefault();
         const element = e.target.closest('li');
-        if (element.classList.contains("header")) {
+        if(element.classList.contains("header")) {
           return;
         }
       
@@ -56,7 +54,7 @@ class AccountsWidget {
 
   /**
    * Метод доступен только авторизованным пользователям
-   * (User.current()).
+   *(User.current()).
    * Если пользователь авторизован, необходимо
    * получить список счетов через Account.list(). При
    * успешном ответе необходимо очистить список ранее
@@ -65,10 +63,10 @@ class AccountsWidget {
    * метода renderItem()
    * */
   update() {
-    Account.list(localStorage.getItem('user'), (err, resp) => {
-      if (resp && resp.success) {
+    Account.list(localStorage.getItem('user'),(err, resp) => {
+      if(resp && resp.success) {
         this.clear();
-        resp.data.forEach (data => this.renderItem(data));
+        resp.data.forEach(data => this.renderItem(data));
       }
     })
   }
@@ -79,7 +77,7 @@ class AccountsWidget {
    * в боковой колонке
    * */
   clear() {
-    this.element.querySelectorAll ('.account').forEach(element => element.remove());
+    this.element.querySelectorAll('.account').forEach(element => element.remove());
   }
 
   /**
@@ -91,9 +89,9 @@ class AccountsWidget {
    * */
   onSelectAccount(element) {
 
-   this.element.querySelectorAll(".account").forEach(element => element.classList.remove ("active"));
+   this.element.querySelectorAll(".account").forEach(element => element.classList.remove("active"));
 
-   element.classList.add ("active")
+   element.classList.add("active")
   
     App.showPage('transactions', element.getAttribute('data-id') ) 
   

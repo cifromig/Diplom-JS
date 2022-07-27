@@ -11,22 +11,20 @@ class Modal {
    * Если переданный элемент не существует,
    * необходимо выкинуть ошибку.
    * */
-  constructor(element){
-    if (JSON.stringify(element) == ""){
-      let err = "Ошибка"
-    //  console.log (err);
-      return err
+  constructor(element){ 
+    if (element != undefined){
+      this.element = element
+      this.registerEvents()
+    } else {
+      throw "Отсутствует параметр"
+      return
     }
-    else {
-      this.element = element;
-      this.registerEvents();
-    }
-  }
+   }
 
   /**
    * При нажатии на элемент с data-dismiss="modal"
    * должен закрыть текущее окно
-   * (с помощью метода Modal.onClose)
+   *(с помощью метода Modal.onClose)
    * */
   registerEvents() {
     this.element.querySelectorAll('[data-dismiss="modal"]').forEach(element => {  
@@ -38,7 +36,7 @@ class Modal {
 
   /**
    * Срабатывает после нажатия на элементы, закрывающие окно.
-   * Закрывает текущее окно (Modal.close())
+   * Закрывает текущее окно(Modal.close())
    * */
   onClose(e) {
     e.preventDefault();

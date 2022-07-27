@@ -12,9 +12,13 @@ class TransactionsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) { 
+    if (element != undefined){
       this.element = element
       this.registerEvents()
+    } else {
+      return err
     }
+  }
   /**
    * Регистрирует обработчики нажатия на
    * кнопки «Новый доход» и «Новый расход».
@@ -25,27 +29,28 @@ class TransactionsWidget {
     let createIncomeButton = document.querySelector('.create-income-button')
 
     createIncomeButton.addEventListener("click", e => {
-      //console.log (createIncomeButton)
+      //console.log(createIncomeButton)
       e.preventDefault();
 
-     if(document.querySelector('#expense-accounts-list').innerHTML != "undefined") {
-
+     if(document.querySelector('#expense-accounts-list').innerHTML != "") { //Данная проверка перкращает вызов формы  Расход в том случае если у пользвателя отсутвуют счета и выдает предупреждение
       App.getModal('newIncome').open(); 
+      //App.getModal('newExpense').open(); 
     } else {
-      alert ("Нет ни одного доступного счета для добаления Дохода")
+      swal("Внимание!!!", "Нет ни одного доступного счета для добаления ДОХОДА", "success");
     }
 
     });
     let createExpenseButton = document.querySelector('.create-expense-button')
 
       createExpenseButton.addEventListener("click", e => {
-      //console.log (createExpenseButton)
+      //console.log(createExpenseButton)
       e.preventDefault();
-    if(document.querySelector('#income-accounts-list').innerHTML != "undefined") {
-      App.getModal('newExpense').open();
+    if(document.querySelector('#income-accounts-list').innerHTML != "") { //Данная проверка перкращает вызов формы Доход в том случае если у пользвателя отсутвуют счета и выдает предупреждение
+      App.getModal('newExpense').open(); 
+
     } else {
-      alert ("Нету ни одного доступного счета для добаления Расхода")
-    }
+      swal("Внимание!!!","Нет ни одного доступного счета для добаления РАСХОДА", "success");
+      }
     });
   }
 }

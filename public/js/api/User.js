@@ -9,7 +9,7 @@ class User {
    * локальном хранилище.
    * */
   static setCurrent(user) {
-    localStorage.setItem ('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   /**
@@ -17,17 +17,18 @@ class User {
    * пользователе из локального хранилища.
    * */
   static unsetCurrent() {
-    localStorage.removeItem ('user');
-    sessionStorage.clear()
-  }
+    localStorage.removeItem('user');
+    sessionStorage.removeItem('lastOptions')
+    }
 
   /**
    * Возвращает текущего авторизованного пользователя
    * из локального хранилища
    * */
   static current() {
-    const user = localStorage.user;
-    return user ? JSON.parse(user) : user;
+    return JSON.parse(localStorage.getItem('user'));
+    // const user = localStorage.user;
+    // return user ? JSON.parse(user) : user;
   }
 
   /**
@@ -35,11 +36,11 @@ class User {
    * авторизованном пользователе.
    * */
   static fetch(callback) {
-    createRequest ({
+    createRequest({
       url: this.URL + "/current",
       method: "GET",
-        callback: (err, response) => {
-          if (response && response.user) {
+        callback:(err, response) => {
+          if(response && response.user) {
             this.setCurrent(response.user);
           } else {
             this.unsetCurrent();
@@ -63,8 +64,8 @@ class User {
       method: 'POST',
      // responseType: 'json',
       data,
-      callback: (err, response) => {
-        if (response && response.user) {
+      callback:(err, response) => {
+        if(response && response.user) {
           this.setCurrent(response.user);
         }
 
@@ -85,8 +86,8 @@ class User {
       url: this.URL + '/register',
       method: 'POST',
       data,
-      callback: (err, response) => {
-        if (response && response.user) {
+      callback:(err, response) => {
+        if(response && response.user) {
           this.setCurrent(response.user);
         }
 
@@ -104,8 +105,8 @@ class User {
       url: this.URL + '/logout',
       method: 'POST',
       // data,
-      callback: (err, response) => {
-        if (response && response.success) {
+      callback:(err, response) => {
+        if(response && response.success) {
           this.unsetCurrent();
         }
         callback(err, response);

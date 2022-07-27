@@ -13,16 +13,14 @@ class AsyncForm {
    * через registerEvents()
    * */
   constructor(element) {
-    if (JSON.stringify(element) == ""){
-      let err = "Ошибка"
-      console.log (err);
-      return err
-    }
-    else {
-
+    if (element != undefined){
     this.element = element;
     this.registerEvents();
+  } else {
+    throw "Отсутствует параметр"
+    return
   }
+
 }
 
   /**
@@ -30,7 +28,7 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-    // e.preventDefault();
+   // e.preventDefault();
     this.element.onsubmit = e => {
       e.preventDefault();
       this.submit();
@@ -45,8 +43,7 @@ class AsyncForm {
    * }
    * */
   getData() {
-       const formData = new FormData (this.element)
-       console.log (Object.fromEntries(formData.entries()))
+       const formData = new FormData(this.element)
        return Object.fromEntries(formData.entries());
 
   }

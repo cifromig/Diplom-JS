@@ -11,8 +11,12 @@ class UserWidget {
    * Если переданный элемент не существует,
    * необходимо выкинуть ошибку.
    * */
-  constructor(element){
-    this.element = element;
+  constructor(element){ 
+    if (element != undefined){
+      this.element = element
+    } else {
+      return err
+    }
   }
 
   /**
@@ -24,8 +28,8 @@ class UserWidget {
    * */
   update(){
     const user = User.current();
-      if (user) {
-        this.element.querySelector ('.user-name').innerText = user.name;
+      if(user) {
+        this.element.querySelector('.user-name').innerText = user.name;
       }
     
   }

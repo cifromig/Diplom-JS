@@ -204,19 +204,14 @@
       "id": "3sp4b8nwl5zma2k7"
     },
     {
-      "name": "екп",
+      "name": "wewe12",
       "user_id": "3sp4b9wgl602pej0",
-      "id": "3sp4b2q8l606j2is"
+      "id": "3sp4bf6gl63od8av"
     },
     {
-      "name": "проверка",
-      "user_id": "3sp4bfwcl606ozos",
-      "id": "3sp4bfwcl606s069"
-    },
-    {
-      "name": "тест",
-      "user_id": "3sp4bfwcl606ozos",
-      "id": "3sp4bfwcl606turv"
+      "name": "89797",
+      "user_id": "3sp4b9wgl602pej0",
+      "id": "3sp4bf6gl63p6m8e"
     }
   ],
   "transactions": [
@@ -561,60 +556,6 @@
       "account_id": "3sp4b8nwl5zma2k7",
       "user_id": "3sp4b9wgl602pej0",
       "created_at": "2022-07-25T02:17:51.987Z"
-    },
-    {
-      "id": "3sp4bfwcl606sk67",
-      "type": "income",
-      "name": "доход",
-      "sum": 200,
-      "account_id": "3sp4bfwcl606s069",
-      "user_id": "3sp4bfwcl606ozos",
-      "created_at": "2022-07-25T03:25:50.239Z"
-    },
-    {
-      "id": "3sp4bfwcl606t16s",
-      "type": "expense",
-      "name": "расход",
-      "sum": 50,
-      "account_id": "3sp4bfwcl606s069",
-      "user_id": "3sp4bfwcl606ozos",
-      "created_at": "2022-07-25T03:26:12.292Z"
-    },
-    {
-      "id": "3sp4bfwcl606u0ju",
-      "type": "income",
-      "name": "доход",
-      "sum": 200,
-      "account_id": "3sp4bfwcl606s069",
-      "user_id": "3sp4bfwcl606ozos",
-      "created_at": "2022-07-25T03:26:58.122Z"
-    },
-    {
-      "id": "3sp4bfwcl606u7ux",
-      "type": "income",
-      "name": "доход",
-      "sum": 200,
-      "account_id": "3sp4bfwcl606turv",
-      "user_id": "3sp4bfwcl606ozos",
-      "created_at": "2022-07-25T03:27:07.593Z"
-    },
-    {
-      "id": "3sp4bfwcl606uelu",
-      "type": "expense",
-      "name": "расход",
-      "sum": 50,
-      "account_id": "3sp4bfwcl606turv",
-      "user_id": "3sp4bfwcl606ozos",
-      "created_at": "2022-07-25T03:27:16.338Z"
-    },
-    {
-      "id": "3sp4bfwcl606uqzj",
-      "type": "expense",
-      "name": "расход",
-      "sum": 50,
-      "account_id": "3sp4bfwcl606turv",
-      "user_id": "3sp4bfwcl606ozos",
-      "created_at": "2022-07-25T03:27:32.383Z"
     }
   ]
 }
